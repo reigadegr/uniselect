@@ -39,23 +39,23 @@
 
         <!--引入thymeleaf依赖-->
         <!-- <dependency> -->
-            <!-- <groupId>org.springframework.boot</groupId> -->
-            <!-- <artifactId>spring-boot-starter-thymeleaf</artifactId> -->
+        <!-- <groupId>org.springframework.boot</groupId> -->
+        <!-- <artifactId>spring-boot-starter-thymeleaf</artifactId> -->
         <!-- </dependency> -->
 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
+        <!-- <dependency> -->
+        <!-- <groupId>junit</groupId> -->
+        <!-- <artifactId>junit</artifactId> -->
+        <!-- <version>4.13.2</version> -->
+        <!-- <scope>test</scope> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
-            <scope>runtime</scope>
-        </dependency>
+        <!-- <dependency> -->
+        <!-- <groupId>org.springframework.boot</groupId> -->
+        <!-- <artifactId>spring-boot-devtools</artifactId> -->
+        <!-- <optional>true</optional> -->
+        <!-- <scope>runtime</scope> -->
+        <!-- </dependency> -->
 
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -63,10 +63,10 @@
             <version>2.2.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
+        <!-- <dependency> -->
+        <!-- <groupId>org.springframework.boot</groupId> -->
+        <!-- <artifactId>spring-boot-starter-jdbc</artifactId> -->
+        <!-- </dependency> -->
 
         <dependency>
             <groupId>com.mysql</groupId>
@@ -75,49 +75,51 @@
         </dependency>
 
         <!-- <dependency> -->
-            <!-- <groupId>org.springframework.boot</groupId> -->
-            <!-- <artifactId>spring-boot-starter-data-jpa</artifactId> -->
+        <!-- <groupId>org.springframework.boot</groupId> -->
+        <!-- <artifactId>spring-boot-starter-data-jpa</artifactId> -->
         <!-- </dependency> -->
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
+        <!-- <dependency> -->
+        <!-- <groupId>org.projectlombok</groupId> -->
+        <!-- <artifactId>lombok</artifactId> -->
+        <!-- <scope>provided</scope> -->
+        <!-- </dependency> -->
 
         <!--spring整合mybatis-plus -->
         <!-- <dependency> -->
-            <!-- <groupId>com.baomidou</groupId> -->
-            <!-- <artifactId>mybatis-plus-boot-starter</artifactId> -->
-            <!-- <version>3.5.3.1</version> -->
+        <!-- <groupId>com.baomidou</groupId> -->
+        <!-- <artifactId>mybatis-plus-boot-starter</artifactId> -->
+        <!-- <version>3.5.3.1</version> -->
         <!-- </dependency> -->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-test</artifactId>
-            <version>${kotlin.version}</version>
-            <scope>test</scope>
-        </dependency>
+        <!-- <dependency> -->
+        <!-- <groupId>org.jetbrains.kotlin</groupId> -->
+        <!-- <artifactId>kotlin-test</artifactId> -->
+        <!-- <version>${kotlin.version}</version> -->
+        <!-- <scope>test</scope> -->
+        <!-- </dependency> -->
     </dependencies>
 
     <build>
         <finalName>springboot</finalName>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.3.1</version>
-            </plugin>
+
+            <!-- <plugin> -->
+            <!-- <groupId>org.apache.maven.plugins</groupId> -->
+            <!-- <artifactId>maven-war-plugin</artifactId> -->
+            <!-- <version>3.3.1</version> -->
+            <!-- </plugin> -->
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                 <configuration>
-                 <mainClass>com.xxx.ApplicationStarter</mainClass>
-                 </configuration>
+                <configuration>
+                    <mainClass>com.xxx.ApplicationStarter</mainClass>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
@@ -126,6 +128,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
@@ -150,6 +153,7 @@
                     <jvmTarget>1.8</jvmTarget>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
