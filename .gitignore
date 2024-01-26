@@ -18,3 +18,5 @@ cppPatch/PushCode/Push
 cppPatch/EncodingPatch/GB2312ToUTF8
 cppPatch/CodeGenerator/CodeGenerator
 cppPatch/CodeGenerator/*java
+ProjectStarter
+uniselect/ProjectStarter

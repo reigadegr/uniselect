@@ -100,17 +100,17 @@ auto vue_projectStart(const char* dependency) -> bool
 
 // init yarn tools
 #if defined(_WIN32)
-    system("yarn.cmd install || npm install -g yarn && yarn.cmd install");
+    system("yarn.cmd --version || npm install -g yarn");
 #elif defined(__linux__)
-    system("yarn install || pkg install yarn && yarn install");
+    system("yarn --version || pkg install yarn");
 #endif
     system((yarn + " config set strict-ssl false").c_str());
     // change repo
     // yarn config set registry https://registry.npm.taobao.org/
     // yarn config set registry https://registry.npmjs.org/
-    system((yarn + " config set registry https://registry.npm.taobao.org/")
+    system((yarn + " config set registry https://registry.npm.taobao.org")
                .c_str());
-
+    system((yarn + " install").c_str());
     // add some packages
     determineStrExists("package.json", "element-plus");
     determineStrExists("package.json", "axios");
