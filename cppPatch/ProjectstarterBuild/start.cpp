@@ -17,10 +17,11 @@
 #include <string>
 #include <thread>
 #include <vector>
+
 template <typename... Args>
-static void LOG(const Args&... args)
+static void LOG(const Args &...args)
 {
-    const auto printArg = [&](const auto& arg) { std::cout << arg; };
+    const auto printArg = [&](const auto &arg) { std::cout << arg; };
     (printArg(args), ...);
     std::cout << std::endl;
 }
@@ -38,7 +39,7 @@ static inline auto oncePrint() -> void
 
 namespace fs = std::filesystem;
 
-static inline auto verify_target_file_is_exists(const char* dependency) -> bool
+static inline auto verify_target_file_is_exists(const char *dependency) -> bool
 {
     if (!fs::exists(dependency)) {
         LOG("cannot found '", dependency, "': No such file or directory");
@@ -60,7 +61,7 @@ template <typename... Args>
     std::vector<std::string> need_delete;
     (need_delete.push_back(args), ...);
 
-    for (const auto& tmp : need_delete) {
+    for (const auto &tmp : need_delete) {
         LOG(tmp);
         if (fs::exists(tmp) && fs::is_directory(tmp)) {
             fs::remove_all(tmp);
@@ -71,8 +72,8 @@ template <typename... Args>
     return true;
 }
 
-[[maybe_unused]] static inline auto sedstr(std::string& vstr,
-                                           const char* need_sed) -> void
+[[maybe_unused]] static inline auto sedstr(std::string &vstr,
+                                           const char *need_sed) -> void
 {
     while (true) {
         size_t pos = vstr.find(need_sed);
@@ -90,7 +91,7 @@ static inline auto shouldRemoveCharacter(const char c) -> bool
     return c == '"' || c == ':';
 }
 
-static inline auto determineStrExists(const char* inputFile, const char* str)
+static inline auto determineStrExists(const char *inputFile, const char *str)
     -> bool
 {
     std::ifstream file(inputFile);
@@ -123,7 +124,7 @@ static inline auto determineStrExists(const char* inputFile, const char* str)
     return false;
 }
 
-static inline auto vue_projectStart(const char* dependency) -> bool
+static inline auto vue_projectStart(const char *dependency) -> bool
 {
     if (bool is_exists = verify_target_file_is_exists(dependency); !is_exists) {
         return false;
@@ -166,7 +167,7 @@ static inline auto vue_projectStart(const char* dependency) -> bool
     return true;
 }
 
-static inline auto springboot_projectStart(const char* dependency) -> bool
+static inline auto springboot_projectStart(const char *dependency) -> bool
 {
     if (bool is_exists = verify_target_file_is_exists(dependency); !is_exists) {
         return false;
@@ -202,8 +203,14 @@ static inline auto scanFile() -> bool
     return true;
 }
 
-auto main(int argc, char** argv) -> int
+auto main(int argc, char **argv) -> int
 {
+// change to UTF-8 characters
+#if defined(_WIN32)
+    LOG("字符转换");
+    system("chcp 65001");
+    LOG("转换完毕");
+#endif
     oncePrint();
 
     if (bool TrueDirectory = scanFile(); !TrueDirectory) {
