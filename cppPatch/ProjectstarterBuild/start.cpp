@@ -14,9 +14,9 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
+#include <string>
 #include <thread>
 #include <vector>
-
 template <typename... Args>
 static void LOG(const Args&... args)
 {
@@ -25,7 +25,7 @@ static void LOG(const Args&... args)
     std::cout << std::endl;
 }
 
-auto oncePrint() -> void
+static inline auto oncePrint() -> void
 {
     std::puts("Welcome to use projectStarter!");
     std::puts("Project Starter by reigadegr@github");
@@ -48,8 +48,14 @@ static inline auto verify_target_file_is_exists(const char* dependency) -> bool
     return true;
 }
 
+#if defined(_WIN32)
+const std::string yarn = "yarn.cmd";
+#elif defined(__linux__)
+const std::string yarn = "yarn";
+#endif
+
 template <typename... Args>
-auto clearPath(Args... args) -> bool
+[[maybe_unused]] static inline auto clearPath(Args... args) -> bool
 {
     std::vector<std::string> need_delete;
     (need_delete.push_back(args), ...);
@@ -65,13 +71,27 @@ auto clearPath(Args... args) -> bool
     return true;
 }
 
-#if defined(_WIN32)
-const std::string yarn = "yarn.cmd";
-#elif defined(__linux__)
-const std::string yarn = "yarn";
-#endif
+[[maybe_unused]] static inline auto sedstr(std::string& vstr,
+                                           const char* need_sed) -> void
+{
+    while (true) {
+        size_t pos = vstr.find(need_sed);
+        if (pos != std::string::npos) {
+            vstr.erase(pos, 1);
+        }
+        else {
+            return;
+        }
+    }
+}
 
-auto determineStrExists(const char* inputFile, const char* str) -> bool
+static inline auto shouldRemoveCharacter(const char c) -> bool
+{
+    return c == '"' || c == ':';
+}
+
+static inline auto determineStrExists(const char* inputFile, const char* str)
+    -> bool
 {
     std::ifstream file(inputFile);
     std::string buf;
@@ -86,12 +106,24 @@ auto determineStrExists(const char* inputFile, const char* str) -> bool
     }
     file.close();
 
-    LOG("检测到", str, "未安装，开始安装");
-    system((yarn + " add " + str).c_str());
+    std::string vstr = str;
+    // sedstr(vstr, "\"");
+    // sedstr(vstr, ":");
+    // // 替换双引号
+    // std::replace(vstr.begin(), vstr.end(), '"', '');
+    // // 替换冒号
+    // std::replace(vstr.begin(), vstr.end(), ':', '');
+
+    vstr.erase(std::remove_if(vstr.begin(), vstr.end(), shouldRemoveCharacter),
+               vstr.end());
+
+    LOG("检测到", vstr, "未安装，开始安装");
+    // std::cin.get();
+    system((yarn + " add " + vstr).c_str());
     return false;
 }
 
-auto vue_projectStart(const char* dependency) -> bool
+static inline auto vue_projectStart(const char* dependency) -> bool
 {
     if (bool is_exists = verify_target_file_is_exists(dependency); !is_exists) {
         return false;
@@ -102,8 +134,9 @@ auto vue_projectStart(const char* dependency) -> bool
 #if defined(_WIN32)
     system("yarn.cmd --version || npm install -g yarn");
 #elif defined(__linux__)
-    system("yarn --version || pkg install yarn");
+    system("yarn --version || pkg install yarn -y");
 #endif
+    system((yarn + " global add yarn").c_str());
     system((yarn + " config set strict-ssl false").c_str());
     // change repo
     // yarn config set registry https://registry.npm.taobao.org/
@@ -112,9 +145,19 @@ auto vue_projectStart(const char* dependency) -> bool
                .c_str());
     system((yarn + " install").c_str());
     // add some packages
-    determineStrExists("package.json", "element-plus");
-    determineStrExists("package.json", "axios");
-    determineStrExists("package.json", "vue-router");
+    determineStrExists("package.json", "\"element-plus\":");
+
+    determineStrExists("package.json", "\"axios\":");
+
+    determineStrExists("package.json", "\"vue-router\":");
+
+    determineStrExists("package.json", "\"vuex\":");
+
+    determineStrExists("package.json", "\"vue\":");
+
+    determineStrExists("package.json", "\"core-js\":");
+
+    determineStrExists("package.json", "\"jquery\":");
 
     system((yarn + " serve || " + yarn + " dev || " + yarn +
             " global add @vue/cli && " + yarn + " serve || " + yarn + " dev")
@@ -123,7 +166,7 @@ auto vue_projectStart(const char* dependency) -> bool
     return true;
 }
 
-auto springboot_projectStart(const char* dependency) -> bool
+static inline auto springboot_projectStart(const char* dependency) -> bool
 {
     if (bool is_exists = verify_target_file_is_exists(dependency); !is_exists) {
         return false;
@@ -134,7 +177,7 @@ auto springboot_projectStart(const char* dependency) -> bool
     return true;
 }
 
-auto AutoDetermine() -> bool
+static inline auto Determine() -> bool
 {
     if (fs::exists("pom.xml")) {
         springboot_projectStart("pom.xml");
@@ -147,7 +190,7 @@ auto AutoDetermine() -> bool
     return false;
 }
 
-auto scanFile() -> bool
+static inline auto scanFile() -> bool
 {
     if ((!fs::exists("pom.xml")) && (!fs::exists("package.json"))) {
         std::puts("Not found springboot and vue dependency file,");
@@ -163,10 +206,10 @@ auto main(int argc, char** argv) -> int
 {
     oncePrint();
 
-    if (bool TureDirectory = scanFile(); !TureDirectory) {
+    if (bool TrueDirectory = scanFile(); !TrueDirectory) {
         return 2;
     }
-    AutoDetermine();
+    Determine();
 
     std::puts("Maybe has some error,please try again");
     std::cin.get();
