@@ -11,7 +11,8 @@ open class ApplicationStarter {
         @JvmStatic
         fun main(args: Array<String>) {
             println("Hello world!")
-            val configurableApplicationContext: ConfigurableApplicationContext = SpringApplication.run(ApplicationStarter::class.java, *args)
+            val configurableApplicationContext: ConfigurableApplicationContext =
+                SpringApplication.run(ApplicationStarter::class.java, *args)
 
             // 向Spring上下文中添加监听器
             configurableApplicationContext.addApplicationListener(SpringStartListener())

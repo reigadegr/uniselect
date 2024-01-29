@@ -1,15 +1,15 @@
-package com.xxx.misc.test;
+package com.xxx.misc.test
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Service
 
 @Service
- class testServiceImpl : testService {
+class testServiceImpl : testService {
     @Autowired
-    private lateinit var testmapper:testMapper
+    private lateinit var testmapper: testMapper
 
 
-    override fun  fid(id:Int) :Test?{
-        return testmapper.fid(id);
+    override fun fid(id: Int): Test? {
+        return testmapper.fid(id)
     }
 }

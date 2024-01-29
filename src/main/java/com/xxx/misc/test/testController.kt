@@ -1,12 +1,12 @@
-package com.xxx.misc.test;
+package com.xxx.misc.test
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.web.bind.annotation.CrossOrigin
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
 
 @RestController
- class testController {
+class testController {
     @Autowired
     private lateinit var testservice: testService
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
     //@CrossOrigin(origins = "http://localhost:8080")
     @CrossOrigin(origins = ["*"])
     @RequestMapping("/fid")
-    fun  fid(id:Int) :Test?{
-        return testservice.fid(id);
+    fun fid(id: Int): Test? {
+        return testservice.fid(id)
     }
 }

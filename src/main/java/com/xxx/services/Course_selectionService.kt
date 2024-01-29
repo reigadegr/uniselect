@@ -17,5 +17,8 @@ interface Course_selectionService {
 
     fun getSelectionByStudentAndCourse(studentId: String): List<Map<String, Any>>?
 
-    fun deleteByStudentIdAndCourseId(@Param("studentId") studentId: String, @Param("courseId") courseId: Int): List<Map<String, Any>>?
+    fun deleteByStudentIdAndCourseId(
+        @Param("studentId") studentId: String,
+        @Param("courseId") courseId: Int
+    ): List<Map<String, Any>>?
 }

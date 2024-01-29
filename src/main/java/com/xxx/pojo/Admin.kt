@@ -11,10 +11,10 @@ package com.xxx.pojo
 //}
 //可以为空
 data class Admin(
-        val id: Int? = null,
-        val admin_id: String? = null,
-        val name: String? = null,
-        val password: String? = null
+    val id: Int? = null,
+    val admin_id: String? = null,
+    val name: String? = null,
+    val password: String? = null
 )
 //不可为空
 //data class Admin(

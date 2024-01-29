@@ -1,5 +1,5 @@
-package com.xxx.misc.test;
+package com.xxx.misc.test
 
- interface testService {
-    fun  fid(id :Int):Test?
+interface testService {
+    fun fid(id: Int): Test?
 }

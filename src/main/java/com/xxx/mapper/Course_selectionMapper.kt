@@ -22,8 +22,10 @@ interface Course_selectionMapper {
     fun updateCourseNumAdd(courseId: Int): Int?
 
     //选课
-    @Insert("INSERT INTO course_selection (student_id, course_id, course_name) " +
-            "VALUES (#{studentId}, #{courseId}, #{courseName})")
+    @Insert(
+        "INSERT INTO course_selection (student_id, course_id, course_name) " +
+                "VALUES (#{studentId}, #{courseId}, #{courseName})"
+    )
     fun insertCourseSelection(studentId: String, courseId: Int, courseName: String): Course_selection?
 
 
@@ -36,5 +38,8 @@ interface Course_selectionMapper {
     fun getSelectionByStudentAndCourse(@Param("studentId") studentId: String): List<Map<String, Any>>?
 
     @Delete("DELETE FROM course_selection WHERE student_id = #{studentId} AND course_id = #{courseId}")
-    fun deleteByStudentIdAndCourseId(@Param("studentId") studentId: String, @Param("courseId") courseId: Int): List<Map<String, Any>>?
+    fun deleteByStudentIdAndCourseId(
+        @Param("studentId") studentId: String,
+        @Param("courseId") courseId: Int
+    ): List<Map<String, Any>>?
 }

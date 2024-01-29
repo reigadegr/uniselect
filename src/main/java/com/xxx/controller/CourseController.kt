@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+
 // import java.util.List
 // import java.util.Map
 
@@ -24,7 +25,7 @@ class CourseController {
 
     @CrossOrigin(origins = ["*"])
     @RequestMapping("/addcourse")
-    fun addCourse(@RequestBody course: Course): Int? {
+    fun addCourse(@RequestBody course: Course): Int {
         //name, teacher, description, num
         try {
             courseService.addCourse(course)
@@ -36,7 +37,7 @@ class CourseController {
 
     @CrossOrigin(origins = ["*"])
     @RequestMapping("/deletecourse")
-    fun deleteCourseById(@RequestBody course: Course): Int? {
+    fun deleteCourseById(@RequestBody course: Course): Int {
         val id = course.id
         println("这里是删除课程刚改的")
 //        System.out.println(id);
