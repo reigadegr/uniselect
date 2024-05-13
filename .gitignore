@@ -10,6 +10,7 @@ target/*
 out
 EncodingPatch/GB2312ToUTF8
 uniselect/node_modules
+uniselect/dist
 ProjectStarter
 Projectstarter/Projectstarter
 node_modules
@@ -20,5 +21,5 @@ cppPatch/CodeGenerator/CodeGenerator
 cppPatch/CodeGenerator/*java
 ProjectStarter
 uniselect/ProjectStarter
-uniselect/dist
+
 src/main/resources/static/*
