@@ -20,4 +20,5 @@ cppPatch/CodeGenerator/CodeGenerator
 cppPatch/CodeGenerator/*java
 ProjectStarter
 uniselect/ProjectStarter
+uniselect/dist
 src/main/resources/static/*
