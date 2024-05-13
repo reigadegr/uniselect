@@ -77,7 +77,7 @@ export default {
     },
     login2() {
       // 跳转?.html
-      window.location.href = "login";
+      this.$router.push('/login');
     },
   },
 };

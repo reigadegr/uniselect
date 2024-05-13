@@ -46,7 +46,7 @@ export default {
             // 登录成功后存储到LocalStorage
             // 声明并初始化全局变量
             localStorage.setItem("globalstdid", this.admin_id);
-            window.location.href = "/welcomeadmin";
+            this.$router.push('/welcomeadmin');
           } else {
             // 验证失败的操作
             this.$message.error("登录失败，请检查账号密码是否填写且正确！");
@@ -57,10 +57,10 @@ export default {
         });
     },
     goToRegister() {
-      window.location.href = "/register";
+      this.$router.push("/register");
     },
     goToWelcome() {
-      window.location.href = "/welcomeadmin";
+      this.$router.push("/welcomeadmin");
     },
   },
 };

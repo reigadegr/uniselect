@@ -1,9 +1,9 @@
 server:
   port: 9090
-  servlet:
-    context-path: /uniselect
 
 spring:
+  mvc:
+    static-path-pattern=/static/**
   datasource:
     url: jdbc:mysql://localhost:3306/uniselect?characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver

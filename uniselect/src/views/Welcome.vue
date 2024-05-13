@@ -55,29 +55,29 @@ export default {
   methods: {
     logout() {
       localStorage.setItem("globalstdid", "");
-      window.location.href = "/";
+      this.$router.push('/'); // 使用 Vue Router 的 push 方法进行跳转
     },
     goToWelcome() {
       // 执行首页跳转的逻辑
-      window.location.href = "/welcome";
+      this.$router.push('/welcome');
     },
     goToSelectCourse() {
       // 执行已选页面跳转的逻辑
-      window.location.href = "/selectcourse";
+      this.$router.push('/selectcourse');
     },
     goToAlreadySelect() {
       // 执行已选页面跳转的逻辑
-      window.location.href = "/alreadyselect";
+      this.$router.push('/alreadyselect');
     },
     goToCourseLayout() {
       // 执行课程表页面跳转的逻辑
-      window.location.href = "/courselayout";
+      this.$router.push('/courselayout');
     },
     goToNowUserInfo() {
       // 执行个人信息页面跳转的逻辑
-      window.location.href = "/nowuserinf";
+      this.$router.push('/nowuserinf');
     },
-  },
+  }
 };
 </script>
 <style>

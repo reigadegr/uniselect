@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     backToDirname() {
-      window.location.href = "/welcomeadmin";
+      this.$router.push('/welcomeadmin');
     },
     async submitForm() {
       const { name, teacher, description, num } = this.formData;

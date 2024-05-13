@@ -73,7 +73,7 @@ export default {
     },
     login2() {
       // 跳转?.html
-      window.location.href = "/welcomeadmin";
+      this.$router.push('/welcomeadmin');
     },
   },
 };

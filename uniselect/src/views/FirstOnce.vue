@@ -9,13 +9,15 @@
     </p>
     <p class="description">请根据您的身份选择不同的登录接口</p>
     <el-button class="btn" type="primary" @click="GoTologin"
-      >我是学生</el-button
+    >我是学生
+    </el-button
     >
     <el-button class="btn" type="primary" @click="GoTologinTeacher"
-      >我是教师</el-button
-    >
+    >我是教师
+    </el-button>
     <el-button class="btn" type="primary" @click="GoTologinAdmin"
-      >我是管理员</el-button
+    >我是管理员
+    </el-button
     >
   </div>
 </template>
@@ -26,13 +28,13 @@ export default {
   methods: {
     GoTologin() {
       // 执行首页跳转的逻辑
-      window.location.href = "/login";
+      this.$router.push('/login');
     },
     GoTologinTeacher() {
-      window.location.href = "/loginteacher";
+      this.$router.push('/loginteacher');
     },
     GoTologinAdmin() {
-      window.location.href = "/loginadmin";
+      this.$router.push('/loginadmin');
     },
   },
 };

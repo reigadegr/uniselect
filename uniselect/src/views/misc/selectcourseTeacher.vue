@@ -87,7 +87,7 @@ export default {
         return;
       }
       //在调用增加课程方法
-      window.location.href = "/courselayoutteacher";
+      this.$router.push("/courselayoutteacher");
     },
     async deleteCourse(id) {
       try {
@@ -146,23 +146,23 @@ export default {
     },
     goToWelcome() {
       // 执行首页跳转的逻辑
-      window.location.href = "/welcometeacher";
+      this.$router.push('/welcometeacher');
     },
     goToSelectCourse() {
       // 执行已选页面跳转的逻辑
-      window.location.href = "/selectcourseteacher";
+      this.$router.push('/selectcourseteacher');
     },
     goToAlreadySelect() {
       // 执行已选页面跳转的逻辑
-      window.location.href = "/alreadyselectteacher";
+      this.$router.push('/alreadyselectteacher');
     },
     goToCourseLayout() {
       // 执行课程表页面跳转的逻辑
-      window.location.href = "/courselayoutteacher";
+      this.$router.push('/courselayoutteacher');
     },
     goToNowUserInfo() {
       // 执行个人信息页面跳转的逻辑
-      window.location.href = "/nowuserinfteacher";
+      this.$router.push('/nowuserinfteacher');
     },
   },
 };

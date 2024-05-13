@@ -6,20 +6,25 @@
         <div class="navdiv">
           <el-button type="primary" @click="goToWelcome">回到首页</el-button>
           <el-button type="primary" @click="goToSelectCourse"
-            >课程管理</el-button
+          >课程管理
+          </el-button
           >
           <el-button type="primary" @click="goToAlreadySelect"
-            >查看学生已选</el-button
+          >查看学生已选
+          </el-button
           >
           <el-button type="primary" @click="goToCourseLayout"
-            >增加课程</el-button
+          >增加课程
+          </el-button
           >
           <el-button type="primary" @click="goToNowUserInfo"
-            >个人信息</el-button
+          >个人信息
+          </el-button
           >
           <el-button type="primary" @click="goToAddNewStu">添加学生</el-button>
           <el-button type="primary" @click="goToAddNewTeacher"
-            >添加教师</el-button
+          >添加教师
+          </el-button
           >
         </div>
       </nav>
@@ -30,17 +35,17 @@
     </div>
     <div class="recommendations">
       <div class="recommendation">
-        <img alt="" src="@/images/default_course_img.jpg" />
+        <img alt="" src="@/images/default_course_img.jpg"/>
         <h2>最热门课程</h2>
         <p>原神中合理进行线程放置的重要性</p>
       </div>
       <div class="recommendation">
-        <img alt="" src="@/images/en.jpg" />
+        <img alt="" src="@/images/en.jpg"/>
         <h2>最新课程</h2>
         <p>DRAM空间不足，频率过低对于崩坏-星穹铁道的影响</p>
       </div>
       <div class="recommendation">
-        <img alt="" src="@/images/dataStructure.jpg" />
+        <img alt="" src="@/images/dataStructure.jpg"/>
         <h2>最受欢迎的课程</h2>
         <p>高负载游戏中，替代schedutil调速器基于帧时间的CPU调频方案</p>
       </div>
@@ -65,33 +70,28 @@ export default {
   methods: {
     logout() {
       localStorage.setItem("globalstdid", "");
-      window.location.href = "/";
+      this.$router.push('/'); // 使用 Vue Router 的 push 方法进行跳转
     },
     goToWelcome() {
-      // 执行首页跳转的逻辑
-      window.location.href = "/welcomeadmin";
+      this.$router.push('/welcomeadmin'); // 跳转到管理员欢迎页面
     },
     goToSelectCourse() {
-      // 执行已选页面跳转的逻辑
-      window.location.href = "/selectcourseadmin";
+      this.$router.push('/selectcourseadmin'); // 跳转到管理员选课页面
     },
     goToAlreadySelect() {
-      // 执行已选页面跳转的逻辑
-      window.location.href = "/alreadyselectadmin";
+      this.$router.push('/alreadyselectadmin'); // 跳转到管理员已选课程页面
     },
     goToCourseLayout() {
-      // 执行添加课程页面跳转的逻辑
-      window.location.href = "/courselayoutadmin";
+      this.$router.push('/courselayoutadmin'); // 跳转到管理员课程布局页面
     },
     goToNowUserInfo() {
-      // 执行个人信息页面跳转的逻辑
-      window.location.href = "/nowuserinfadmin";
+      this.$router.push('/nowuserinfadmin'); // 跳转到管理员个人信息页面
     },
     goToAddNewStu() {
-      window.location.href = "/registerstuadmin";
+      this.$router.push('/registerstuadmin'); // 跳转到管理员添加学生页面
     },
     goToAddNewTeacher() {
-      window.location.href = "/registerteacher";
+      this.$router.push('/registerteacher'); // 跳转到管理员添加教师页面
     },
   },
 };

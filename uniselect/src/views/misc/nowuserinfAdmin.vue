@@ -39,32 +39,27 @@ export default {
   },
   methods: {
     goToWelcome() {
-      // 执行首页跳转的逻辑
-      window.location.href = "/welcomeadmin";
+      this.$router.push('/welcomeadmin');
     },
     goToSelectCourse() {
-      // 执行已选页面跳转的逻辑
-      window.location.href = "/selectcourseadmin";
+      this.$router.push('/selectcourseadmin');
     },
     goToAlreadySelect() {
-      // 执行已选页面跳转的逻辑
-      window.location.href = "/alreadyselectadmin";
+      this.$router.push('/alreadyselectadmin');
     },
     goToCourseLayout() {
-      // 执行添加课程页面跳转的逻辑
-      window.location.href = "/courselayoutadmin";
+      this.$router.push('/courselayoutadmin');
     },
     goToNowUserInfo() {
-      // 执行个人信息页面跳转的逻辑
-      window.location.href = "/nowuserinfadmin";
+      this.$router.push('/nowuserinfadmin');
     },
     goToAddNewStu() {
-      window.location.href = "/registerstuadmin";
+      this.$router.push('/registerstuadmin');
     },
     goToAddNewTeacher() {
-      window.location.href = "/registerteacher";
+      this.$router.push('/registerteacher');
     },
-  },
+  }
 };
 </script>
 <style>

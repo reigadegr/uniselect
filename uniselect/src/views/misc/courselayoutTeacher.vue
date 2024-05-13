@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     backToDirname() {
-      window.location.href = "/selectcourseteacher";
+      this.$router.push("/selectcourseteacher");
     },
     async submitForm() {
       const { name, teacher, description, num } = this.formData;

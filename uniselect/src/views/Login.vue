@@ -11,6 +11,7 @@
       <br /><br />
       <!--      <el-button type="info" @click="goToRegister">Register</el-button>-->
     </form>
+    <el-button type="primary" @click="goToRegister">去注册</el-button>
   </div>
 </template>
 
@@ -47,9 +48,8 @@ export default {
             // 登录成功后存储到LocalStorage
             // 声明并初始化全局变量
             localStorage.setItem("globalstdid", this.studentId);
-            // localStorage.setItem("globalstdname", this.name);
-            // localStorage.setItem("globalstdtype", this.type);
-            window.location.href = "welcome";
+            this.$router.push("/welcome");
+
           } else {
             // 验证失败的操作
             this.$message.error("登录失败，请检查学号密码是否填写且正确！");
@@ -60,10 +60,10 @@ export default {
         });
     },
     goToRegister() {
-      window.location.href = "/register";
+      this.$router.push("/register");
     },
     goToWelcome() {
-      window.location.href = "welcome";
+      this.$router.push("/welcome");
     },
   },
 };

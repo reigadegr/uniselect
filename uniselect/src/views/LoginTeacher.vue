@@ -46,7 +46,7 @@ export default {
             // 登录成功后存储到LocalStorage
             // 声明并初始化全局变量
             localStorage.setItem("globalstdid", this.teacher_id);
-            window.location.href = "/welcometeacher";
+            this.$router.push('/welcometeacher');
           } else {
             // 验证失败的操作
             this.$message.error("登录失败，请检查学号密码是否填写且正确！");
@@ -56,11 +56,8 @@ export default {
           console.error(error);
         });
     },
-    goToRegister() {
-      window.location.href = "/register";
-    },
     goToWelcome() {
-      window.location.href = "/welcometeacher";
+      this.$router.push("/welcometeacher");
     },
   },
 };

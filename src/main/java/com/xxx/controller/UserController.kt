@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
+@RequestMapping("/uniselect")
 class UserController {
     @Autowired
     private lateinit var userService: UserService

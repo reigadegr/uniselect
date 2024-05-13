@@ -20,3 +20,4 @@ cppPatch/CodeGenerator/CodeGenerator
 cppPatch/CodeGenerator/*java
 ProjectStarter
 uniselect/ProjectStarter
+src/main/resources/static/*

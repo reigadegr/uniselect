@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 // import java.util.Map
 
 @RestController
+@RequestMapping("/uniselect")
 class Course_selectionController {
     @Autowired
     private lateinit var courseSelectionservice: Course_selectionService

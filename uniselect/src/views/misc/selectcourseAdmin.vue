@@ -4,7 +4,8 @@
       <el-button type="primary" @click="goToWelcome">回到首页</el-button>
       <el-button type="primary" @click="goToSelectCourse">课程管理</el-button>
       <el-button type="primary" @click="goToAlreadySelect"
-        >查看学生已选</el-button
+      >查看学生已选
+      </el-button
       >
       <el-button type="primary" @click="goToCourseLayout">增加课程</el-button>
       <el-button type="primary" @click="goToNowUserInfo">个人信息</el-button>
@@ -16,40 +17,42 @@
     <el-button type="warning" @click="getCourses">刷新课程信息</el-button>
     <div id="message">{{ message }}</div>
     <el-input
-      v-model="searchKeyword"
-      :style="{ width: '200px' }"
-      placeholder="请输入要搜索课程名的子串"
+        v-model="searchKeyword"
+        :style="{ width: '200px' }"
+        placeholder="请输入要搜索课程名的子串"
     ></el-input>
     <el-button type="primary" @click="searchCourses">搜索</el-button>
     <table v-if="courses.length > 0">
       <thead>
-        <tr>
-          <th>课程ID</th>
-          <th>课程名称</th>
-          <th>主讲教师</th>
-          <th>课程描述</th>
-          <th>课程余量</th>
-          <th>可选操作</th>
-        </tr>
+      <tr>
+        <th>课程ID</th>
+        <th>课程名称</th>
+        <th>主讲教师</th>
+        <th>课程描述</th>
+        <th>课程余量</th>
+        <th>可选操作</th>
+      </tr>
       </thead>
       <tbody>
-        <tr v-for="(course, index) in courses" :key="index">
-          <!--      要与表字段一样-->
-          <td>{{ course.id }}</td>
-          <td>{{ course.name }}</td>
-          <td>{{ course.teacher }}</td>
-          <td>{{ course.description }}</td>
-          <td>{{ course.num }}</td>
-          <td>
-            <!--          <el-button type="primary" @click="getCourseId(course.id,course.num,globalstdid,course.name)">选课</el-button>-->
-            <el-button type="danger" @click="deleteCourse(course.id)"
-              >删课</el-button
-            >
-            <el-button type="warning" @click="modifyCourse(course.id)"
-              >修改</el-button
-            >
-          </td>
-        </tr>
+      <tr v-for="(course, index) in courses" :key="index">
+        <!--      要与表字段一样-->
+        <td>{{ course.id }}</td>
+        <td>{{ course.name }}</td>
+        <td>{{ course.teacher }}</td>
+        <td>{{ course.description }}</td>
+        <td>{{ course.num }}</td>
+        <td>
+          <!--          <el-button type="primary" @click="getCourseId(course.id,course.num,globalstdid,course.name)">选课</el-button>-->
+          <el-button type="danger" @click="deleteCourse(course.id)"
+          >删课
+          </el-button
+          >
+          <el-button type="warning" @click="modifyCourse(course.id)"
+          >修改
+          </el-button
+          >
+        </td>
+      </tr>
       </tbody>
     </table>
   </div>
@@ -86,7 +89,7 @@ export default {
         return;
       }
       //在调用增加课程方法
-      window.location.href = "/courselayoutadmin";
+      this.$router.push("/courselayoutadmin");
     },
     async deleteCourse(id) {
       try {
@@ -99,76 +102,79 @@ export default {
         return;
       }
       await axios
-        .get("http://localhost:9090/uniselect/courses")
-        .then((response) => {
-          this.courses = response.data;
-        })
-        .catch((error) => {
-          console.error(error);
-          this.$message.error("获取课程信息失败");
-        });
+          .get("http://localhost:9090/uniselect/courses")
+          .then((response) => {
+            this.courses = response.data;
+          })
+          .catch((error) => {
+            console.error(error);
+            this.$message.error("获取课程信息失败");
+          });
       this.$message.success("删除课程成功！");
     },
     async searchCourses() {
       this.$message.info("输入的内容: " + this.searchKeyword);
       await axios
-        .get("http://localhost:9090/uniselect/courses")
-        .then((response) => {
-          this.courses = response.data;
-          this.$message.success("课程列表已更新");
-          this.filterCourses();
-        })
-        .catch((error) => {
-          console.error(error);
-          this.$message.error("获取课程信息失败");
-        });
+          .get("http://localhost:9090/uniselect/courses")
+          .then((response) => {
+            this.courses = response.data;
+            this.$message.success("课程列表已更新");
+            this.filterCourses();
+          })
+          .catch((error) => {
+            console.error(error);
+            this.$message.error("获取课程信息失败");
+          });
     },
     filterCourses() {
       if (this.searchKeyword) {
         const filteredCourses = this.courses.filter((course) =>
-          course.name.includes(this.searchKeyword)
+            course.name.includes(this.searchKeyword)
         );
         this.courses = filteredCourses;
       }
     },
     async getCourses() {
       await axios
-        .get("http://localhost:9090/uniselect/courses")
-        .then((response) => {
-          this.courses = response.data;
-          this.$message.success("课程列表已更新");
-        })
-        .catch((error) => {
-          console.error(error);
-          this.$message.error("获取课程信息失败");
-        });
+          .get("http://localhost:9090/uniselect/courses")
+          .then((response) => {
+            this.courses = response.data;
+            this.$message.success("课程列表已更新");
+          })
+          .catch((error) => {
+            console.error(error);
+            this.$message.error("获取课程信息失败");
+          });
     },
     goToWelcome() {
       // 执行首页跳转的逻辑
-      window.location.href = "/welcomeadmin";
+      this.$router.push('/welcomeadmin');
     },
     goToSelectCourse() {
       // 执行已选页面跳转的逻辑
-      window.location.href = "/selectcourseadmin";
+      this.$router.push('/selectcourseadmin');
     },
     goToAlreadySelect() {
       // 执行已选页面跳转的逻辑
-      window.location.href = "/alreadyselectadmin";
+      this.$router.push('/alreadyselectadmin');
     },
     goToCourseLayout() {
       // 执行添加课程页面跳转的逻辑
-      window.location.href = "/courselayoutadmin";
+      this.$router.push('/courselayoutadmin');
     },
     goToNowUserInfo() {
       // 执行个人信息页面跳转的逻辑
-      window.location.href = "/nowuserinfadmin";
+      this.$router.push('/nowuserinfadmin');
     },
     goToAddNewStu() {
-      window.location.href = "/registerstuadmin";
+      // 执行添加学生页面跳转的逻辑
+      this.$router.push('/registerstuadmin');
     },
     goToAddNewTeacher() {
-      window.location.href = "/registerteacher";
+      // 执行添加教师页面跳转的逻辑
+      this.$router.push('/registerteacher');
     },
+
   },
 };
 </script>

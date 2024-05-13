@@ -62,30 +62,25 @@ export default {
   methods: {
     logout() {
       localStorage.setItem("globalstdid", "");
-      window.location.href = "/";
+      this.$router.push('/'); // 使用 Vue Router 的 push 方法进行跳转
     },
     goToWelcome() {
-      // 执行首页跳转的逻辑
-      window.location.href = "/welcometeacher";
+      this.$router.push('/welcometeacher'); // 跳转到教师欢迎页面
     },
     goToSelectCourse() {
-      // 执行已选页面跳转的逻辑
-      window.location.href = "/selectcourseteacher";
+      this.$router.push('/selectcourseteacher'); // 跳转到教师选课页面
     },
     goToAlreadySelect() {
-      // 执行已选页面跳转的逻辑
-      window.location.href = "/alreadyselectteacher";
+      this.$router.push('/alreadyselectteacher'); // 跳转到教师已选课程页面
     },
     goToCourseLayout() {
-      // 执行课程表页面跳转的逻辑
-      window.location.href = "/courselayoutteacher";
+      this.$router.push('/courselayoutteacher'); // 跳转到教师课程表页面
     },
     goToNowUserInfo() {
-      // 执行个人信息页面跳转的逻辑
-      window.location.href = "/nowuserinfteacher";
+      this.$router.push('/nowuserinfteacher'); // 跳转到教师个人信息页面
     },
     goToAddNewStu() {
-      window.location.href = "/register";
+      this.$router.push('/register'); // 跳转到注册页面
     },
   },
 };
