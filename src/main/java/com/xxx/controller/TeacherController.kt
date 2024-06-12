@@ -14,12 +14,8 @@ class TeacherController {
     @CrossOrigin(origins = ["*"])
     @RequestMapping("/loginteacher")
     fun findByTeacherIdAndPassword(@RequestBody teacher: Teacher): Teacher? {
-//        System.out.println("-------开始教师登录--------");
         val teacherId = teacher.teacher_id ?: ""
         val password = teacher.password ?: ""
-//        System.out.println("教师id "+teacherId);
-//        System.out.println("密码： "+password);
-//        System.out.println("--------教师登录结束-------");
         return teacherService.findByTeacherIdAndPassword(teacherId, password)
     }
 
@@ -38,12 +34,6 @@ class TeacherController {
         val name = teacher.name ?: ""
         val password = teacher.password ?: ""
         val description = teacher.description ?: ""
-//        System.out.println("这里是添加教师");
-//        System.out.println(teacher_id);
-//        System.out.println(name);
-//        System.out.println(password);
-//        System.out.println(description);
-//        System.out.println("添加老师结束");
         try {
             teacherService.insertTeacher(teacher_id, name, password, description)
         } catch (exception: Exception) {

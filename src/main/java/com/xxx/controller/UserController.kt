@@ -3,10 +3,7 @@ package com.xxx.controller
 import com.xxx.pojo.User
 import com.xxx.services.UserService
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.CrossOrigin
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/uniselect")
@@ -19,6 +16,14 @@ class UserController {
     fun findByUserIdAndPassword(@RequestBody user: User): User? {
         val studentId = user.student_id ?: ""
         val password = user.password ?: ""
+        println("学号：$studentId")
+        println("密码：$password")
+        return userService.findByUserIdAndPassword(studentId, password)
+    }
+
+    @CrossOrigin(origins = ["*"])
+    @RequestMapping(value = ["/login2/{studentId}/{password}"], method = [RequestMethod.GET])
+    fun findByUserIdAndPassword2(@PathVariable studentId: String, @PathVariable password: String): User? {
         println("学号：$studentId")
         println("密码：$password")
         return userService.findByUserIdAndPassword(studentId, password)
