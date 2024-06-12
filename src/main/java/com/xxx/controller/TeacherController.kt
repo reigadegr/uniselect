@@ -3,10 +3,7 @@ package com.xxx.controller
 import com.xxx.pojo.Teacher
 import com.xxx.services.TeacherService
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.CrossOrigin
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/uniselect")
@@ -26,6 +23,11 @@ class TeacherController {
         return teacherService.findByTeacherIdAndPassword(teacherId, password)
     }
 
+    @CrossOrigin(origins = ["*"])
+    @RequestMapping(value = ["/loginteacher2/{teacherId}/{password}"], method = [RequestMethod.GET])
+    fun findByTeacherIdAndPassword2(@PathVariable teacherId: String, @PathVariable password: String): Teacher? {
+        return teacherService.findByTeacherIdAndPassword(teacherId, password)
+    }
 
     @CrossOrigin(origins = ["*"])
     @RequestMapping("/addteacher")
