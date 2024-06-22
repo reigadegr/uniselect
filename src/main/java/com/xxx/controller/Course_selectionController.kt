@@ -2,21 +2,14 @@ package com.xxx.controller
 
 import com.xxx.pojo.Course_selection
 import com.xxx.services.Course_selectionService
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
-// import java.util.List
-// import java.util.Map
-
 @RestController
 @RequestMapping("/uniselect")
-class Course_selectionController {
-    @Autowired
-    private lateinit var courseSelectionservice: Course_selectionService
-
+class Course_selectionController(private val courseSelectionservice: Course_selectionService) {
     @CrossOrigin(origins = ["*"])
     @RequestMapping("/Course_selection_insert")
     fun insertCourseSelection(@RequestBody course_selection: Course_selection): Course_selection? {

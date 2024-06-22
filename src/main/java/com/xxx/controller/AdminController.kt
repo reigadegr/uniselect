@@ -2,7 +2,6 @@ package com.xxx.controller
 
 import com.xxx.pojo.Admin
 import com.xxx.services.AdminService
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -10,11 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/uniselect")
-class AdminController {
-
-    @Autowired
-    private lateinit var adminService: AdminService
-
+class AdminController(private val adminService: AdminService) {
     @CrossOrigin(origins = ["*"])
     @RequestMapping("/adminloginverify")
     fun findByAdminIdAndPassword(@RequestBody admin: Admin): Admin? {

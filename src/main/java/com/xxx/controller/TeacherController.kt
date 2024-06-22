@@ -2,14 +2,11 @@ package com.xxx.controller
 
 import com.xxx.pojo.Teacher
 import com.xxx.services.TeacherService
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/uniselect")
-class TeacherController {
-    @Autowired
-    lateinit var teacherService: TeacherService
+class TeacherController(private val teacherService: TeacherService) {
 
     @CrossOrigin(origins = ["*"])
     @RequestMapping("/loginteacher")

@@ -2,20 +2,15 @@ package com.xxx.controller
 
 import com.xxx.pojo.Course
 import com.xxx.services.CourseService
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
-// import java.util.List
-// import java.util.Map
 
 @RestController
 @RequestMapping("/uniselect")
-class CourseController {
-    @Autowired
-    private lateinit var courseService: CourseService
+class CourseController(private val courseService: CourseService) {
 
     @CrossOrigin(origins = ["*"])
     @RequestMapping("/courses")

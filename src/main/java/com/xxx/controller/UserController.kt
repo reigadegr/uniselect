@@ -2,15 +2,11 @@ package com.xxx.controller
 
 import com.xxx.pojo.User
 import com.xxx.services.UserService
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/uniselect")
-class UserController {
-    @Autowired
-    private lateinit var userService: UserService
-
+class UserController(private val userService: UserService) {
     @CrossOrigin(origins = ["*"])
     @RequestMapping("/login")
     fun findByUserIdAndPassword(@RequestBody user: User): User? {
