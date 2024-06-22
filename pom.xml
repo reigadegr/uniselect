@@ -10,16 +10,17 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        <kotlin.version>1.6.10</kotlin.version>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <kotlin.version>1.9.22</kotlin.version>
     </properties>
     <parent>
         <!--声明本项目的父级依赖是Spring boot，Spring boot的相关依赖就可以被本项目继承，在使用时。
             只需要在<dependency>标签中声明即可，而不用关心版本适配问题-->
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.3</version>
+        <version>3.3.1</version>
         <!--查找顺序：relativePath元素中的地址–本地仓库–远程仓库,设定一个空值将始终从仓库中获取，不从本地路径获取-->
         <relativePath />
     </parent>
@@ -60,7 +61,7 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.2.2</version>
+            <version>3.0.3</version>
         </dependency>
 
         <!-- <dependency> -->
@@ -71,7 +72,6 @@
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
-            <version>8.0.33</version>
         </dependency>
 
         <!-- <dependency> -->
@@ -94,7 +94,6 @@
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
-            <version>${kotlin.version}</version>
         </dependency>
         <!-- <dependency> -->
             <!-- <groupId>org.jetbrains.kotlin</groupId> -->
@@ -132,7 +131,6 @@
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
-                <version>${kotlin.version}</version>
                 <executions>
                     <execution>
                         <id>compile</id>
@@ -157,7 +155,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
                 <executions>
                     <execution>
                         <id>compile</id>
@@ -175,8 +172,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <release>${java.version}</release>
                 </configuration>
             </plugin>
         </plugins>
