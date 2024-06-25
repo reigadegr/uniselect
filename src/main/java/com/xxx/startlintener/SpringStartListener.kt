@@ -23,5 +23,6 @@ class SpringStartListener : ApplicationListener<ApplicationReadyEvent> {
     override fun onApplicationEvent(event: ApplicationReadyEvent) {
         // Spring Boot应用程序已经完全启动
         println("Spring Boot应用程序已经完全启动！")
+        println("访问: http://127.0.0.1:9090")
     }
 }
