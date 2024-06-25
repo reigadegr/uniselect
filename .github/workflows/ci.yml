@@ -21,8 +21,9 @@ jobs:
           npm config set strict-ssl false
           npm install -g yarn
           yarn config set strict-ssl false
-          yarn install --cwd $(pwd)/uniselect
           cd $(pwd)/uniselect
+          npx update-browserslist-db@latest
+          yarn install
           yarn build
           cd  ..
           
@@ -38,7 +39,7 @@ jobs:
           name=$(grep finalName $(pwd)/pom.xml | sed  's/[<>]/ /g' | awk 'NR==1{print $2}')
           mv $(pwd)/target/$name.jar  ./output1
           cp -af $(pwd)/uniselect.sql ./output1
-          echo "java -jar $name.jar" | tee startup.bat >/dev/null
+          echo "java -jar $name.jar" | tee ./output1/startup.bat >/dev/null
           
       - name: Build springBoot Product(-proot)
         run: |
@@ -48,7 +49,7 @@ jobs:
           name=$(grep finalName $(pwd)/pom.xml | sed  's/[<>]/ /g' | awk 'NR==1{print $2}')
           mv $(pwd)/target/$name.jar  ./output2
           cp -af $(pwd)/uniselect.sql ./output2
-          echo "java -jar $name.jar" | tee startup.bat >/dev/null
+          echo "java -jar $name.jar" | tee ./output2/startup.bat >/dev/null
           
       - name: Pack artifacts(p1234)
         uses: actions/upload-artifact@v4
