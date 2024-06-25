@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h1>米哈游大学选课系统</h1>
+      <h1>北城选课系统</h1>
       <nav>
         <div class="navdiv">
           <el-button type="primary" @click="goToWelcome">回到首页</el-button>

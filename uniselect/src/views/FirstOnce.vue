@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="title">米哈游大学选课系统</h1>
+    <h1 class="title">北城选课系统</h1>
     <p class="description">
       欢迎来到本选课系统！这是一个方便学生进行课程选择和管理的在线平台。
     </p>
