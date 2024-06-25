@@ -1,0 +1,64 @@
+name: ci-build
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: false
+        default: 'warning'
+#  push:
+#    branches: ["main"]
+#  pull_request:
+#    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build vue Product
+        run: |
+          npm install -g yarn
+          yarn install --cwd $(pwd)/uniselect
+          cd $(pwd)/uniselect
+          yarn build
+          cd  ..
+          
+      - name: Migrate vue static resources to spring-boot Server
+        run: |
+          mkdir -p $(pwd)/src/main/resources/static
+          cp -af $(pwd)/uniselect/dist/* $(pwd)/src/main/resources/static
+          
+      - name: Build springBoot Product(-p1234)
+        run: |
+          mvn -f $(pwd)/pom.xml clean install
+          mkdir -p  ./output1
+          name=$(grep finalName $(pwd)/pom.xml | sed  's/[<>]/ /g' | awk 'NR==1{print $2}')
+          mv $(pwd)/target/$name.jar  ./output1
+          cp -af $(pwd)/uniselect.sql ./output1
+          echo "java -jar $name.jar" | tee startup.bat >/dev/null
+          
+      - name: Build springBoot Product(-proot)
+        run: |
+          sed -i 's/password: 1234/password: root/g' $(pwd)/src/main/resources/application.yml 
+          mvn -f $(pwd)/pom.xml clean install
+          mkdir -p  ./output2
+          name=$(grep finalName $(pwd)/online-exam-backend/pom.xml | sed  's/[<>]/ /g' | awk 'NR==1{print $2}')
+          mv $(pwd)/target/$name.jar  ./output2
+          cp -af $(pwd)/uniselect.sql ./output2
+          echo "java -jar $name.jar" | tee startup.bat >/dev/null
+          
+      - name: Pack artifacts(p1234)
+        uses: actions/upload-artifact@v4
+        with:
+          name: online_exam_p1234
+          compression-level: 9
+          path: output1
+          
+      - name: Pack artifacts(proot)
+        uses: actions/upload-artifact@v4
+        with:
+          name: online_exam_proot
+          compression-level: 9
+          path: output2
+          
