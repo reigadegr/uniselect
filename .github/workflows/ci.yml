@@ -40,7 +40,7 @@ jobs:
           mv $(pwd)/target/$name.jar  ./output1
           cp -af $(pwd)/uniselect.sql ./output1
           echo "java -jar $name.jar" | tee ./output1/startup.bat >/dev/null
-          
+          echo "pause" | tee ./output1/startup.bat >/dev/null
       - name: Build springBoot Product(-proot)
         run: |
           sed -i 's/password: 1234/password: root/g' $(pwd)/src/main/resources/application.yml 
@@ -50,7 +50,7 @@ jobs:
           mv $(pwd)/target/$name.jar  ./output2
           cp -af $(pwd)/uniselect.sql ./output2
           echo "java -jar $name.jar" | tee ./output2/startup.bat >/dev/null
-          
+          echo "pause" | tee ./output2/startup.bat >/dev/null
       - name: Pack artifacts(p1234)
         uses: actions/upload-artifact@v4
         with:
