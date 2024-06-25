@@ -1,15 +1,20 @@
-## SpringBoot+vue期末大作业
+## 技术栈: SpringBoot+vue+MySQL
 选课系统\
 ## 部署说明
 - 进入项目的src/main/resources,修改application.yml的数据库MySQL的密码
 - 创建uniselect表，执行项目里的uniselect.sql
-- 找到项目根目录的run.exe，双击，即可启动springboot后端程序
+- 找到项目根目录的run_rs.exe，双击，即可启动springboot后端程序
 - 进入uniselect文件夹，这里是vue前端页面
-- 一样的，双击run.exe，即可运行vue项目
+- 一样的，双击run_rs.exe，即可运行vue项目
 - 根据vue给出的地址，访问即可
 
-## 注意事项
-- 两个run.exe的MD5一样，源码在项目根目录的cppPatch/ProjectstarterBuild中
+## 获取Release:
+- 使用本项目GitHub action功能，自动化构建MySQL密码分别为1234和root的版本
+- 可以直接下载构建好的zip，下载解压后双击startup.bat即可启动
+- 下载地址: https://github.com/reigadegr/spbootvue/actions/runs/9661320292
+## 一键运行脚本:run_rs:
+- 使用rust重构的项目启动脚本
+- 访问https://github.com/reigadegr/run_rs/actions/runs/9629482555 可下载
 
 ## 基本逻辑：
 1，定义实体,添加getter,setter方法，有无参的构造方法
