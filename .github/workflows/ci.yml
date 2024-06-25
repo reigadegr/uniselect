@@ -20,6 +20,7 @@ jobs:
         run: |
           npm config set strict-ssl false
           npm install -g yarn
+          yarn config set strict-ssl false
           yarn install --cwd $(pwd)/uniselect
           cd $(pwd)/uniselect
           yarn build
