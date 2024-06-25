@@ -43,7 +43,7 @@ jobs:
           sed -i 's/password: 1234/password: root/g' $(pwd)/src/main/resources/application.yml 
           mvn -f $(pwd)/pom.xml clean install
           mkdir -p  ./output2
-          name=$(grep finalName $(pwd)/online-exam-backend/pom.xml | sed  's/[<>]/ /g' | awk 'NR==1{print $2}')
+          name=$(grep finalName $(pwd)/pom.xml | sed  's/[<>]/ /g' | awk 'NR==1{print $2}')
           mv $(pwd)/target/$name.jar  ./output2
           cp -af $(pwd)/uniselect.sql ./output2
           echo "java -jar $name.jar" | tee startup.bat >/dev/null
