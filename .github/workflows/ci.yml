@@ -22,8 +22,8 @@ jobs:
           npm install -g yarn
           yarn config set strict-ssl false
           cd $(pwd)/uniselect
-          npx update-browserslist-db@latest
           yarn install
+          npx update-browserslist-db@latest
           yarn build
           cd  ..
           
