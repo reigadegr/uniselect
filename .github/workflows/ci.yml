@@ -18,6 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build vue Product
         run: |
+          npm config set strict-ssl false
           npm install -g yarn
           yarn install --cwd $(pwd)/uniselect
           cd $(pwd)/uniselect
@@ -51,14 +52,14 @@ jobs:
       - name: Pack artifacts(p1234)
         uses: actions/upload-artifact@v4
         with:
-          name: online_exam_p1234
+          name: uniselect_p1234
           compression-level: 9
           path: output1
           
       - name: Pack artifacts(proot)
         uses: actions/upload-artifact@v4
         with:
-          name: online_exam_proot
+          name: uniselect_proot
           compression-level: 9
           path: output2
           
