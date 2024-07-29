@@ -1,15 +1,15 @@
 name: ci-build
 on:
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'
-        required: false
-        default: 'warning'
-#  push:
-#    branches: ["main"]
-#  pull_request:
-#    branches: ["main"]
+#  workflow_dispatch:
+#    inputs:
+#      logLevel:
+#        description: 'Log level'
+#        required: false
+#        default: 'warning'
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
 jobs:
   build:
@@ -19,12 +19,12 @@ jobs:
       - name: Build vue Product
         run: |
           npm config set strict-ssl false
-          npm install -g yarn
-          yarn config set strict-ssl false
+          npm install -g pnpm
+          pnpm config set strict-ssl false
           cd $(pwd)/uniselect
-          yarn install
+          pnpm install
           npx update-browserslist-db@latest
-          yarn build
+          pnpm build
           cd  ..
           
       - name: Migrate vue static resources to spring-boot Server
