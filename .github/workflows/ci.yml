@@ -30,7 +30,7 @@ jobs:
       - name: Migrate vue static resources to spring-boot Server
         run: |
           mkdir -p $(pwd)/src/main/resources/static
-          cp -af $(pwd)/uniselect/dist/* $(pwd)/src/main/resources/static
+          cp -arf $(pwd)/uniselect/dist/* $(pwd)/src/main/resources/static
           
       - name: Build springBoot Product(-p1234)
         run: |
@@ -38,9 +38,9 @@ jobs:
           mkdir -p  ./output1
           name=$(grep finalName $(pwd)/pom.xml | sed  's/[<>]/ /g' | awk 'NR==1{print $2}')
           mv $(pwd)/target/$name.jar  ./output1
-          cp -af $(pwd)/uniselect.sql ./output1
-          echo "java -jar $name.jar" | tee ./output1/startup.bat >/dev/null
-          echo "pause" | tee ./output1/startup.bat >/dev/null
+          cp -arf $(pwd)/uniselect.sql ./output1
+          echo "java -jar $name.jar" | tee ./output1/startup.bat
+          echo "pause" | tee -a ./output1/startup.bat
       - name: Build springBoot Product(-proot)
         run: |
           sed -i 's/password: 1234/password: root/g' $(pwd)/src/main/resources/application.yml 
@@ -48,9 +48,9 @@ jobs:
           mkdir -p  ./output2
           name=$(grep finalName $(pwd)/pom.xml | sed  's/[<>]/ /g' | awk 'NR==1{print $2}')
           mv $(pwd)/target/$name.jar  ./output2
-          cp -af $(pwd)/uniselect.sql ./output2
-          echo "java -jar $name.jar" | tee ./output2/startup.bat >/dev/null
-          echo "pause" | tee ./output2/startup.bat >/dev/null
+          cp -arf $(pwd)/uniselect.sql ./output2
+          echo "java -jar $name.jar" | tee ./output2/startup.bat
+          echo "pause" | tee -a ./output2/startup.bat
       - name: Pack artifacts(p1234)
         uses: actions/upload-artifact@v4
         with:
